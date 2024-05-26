@@ -1,1 +1,2 @@
-require("preben")
+require("preben.core")
+require("preben.lazy")
