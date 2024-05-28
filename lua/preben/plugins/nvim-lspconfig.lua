@@ -80,19 +80,25 @@ return {
       capabilities = capabilities,
       on_attach = on_attach,
     })
-
+    -- python
     lspconfig["pylsp"].setup({
       capabilities = capabilities,
-      on_attach = custom_attach,
+      on_attach = on_attach,
+      filetypes = {'python'},
       settings = {
         pylsp = {
           plugins = {
-            autopep8 = {enabled = true},
-            jedi_completion = { fuzzy = true },
+            --autopep8 = {enabled = true},
+            --jedi_completion = { fuzzy = true },
+            jedi_completion = {include_params = true,},
+            pylint = { enabled = false, executable = "pylint" },
+            pycodestyle = { enabled = false, maxLineLength=120},
+            pyflakes = {enabled = false},
           }
         }
       }
     })
+
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
